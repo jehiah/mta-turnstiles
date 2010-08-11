@@ -1,3 +1,5 @@
 tornado
+._*
+data/turnstile*
 *.pyc
 

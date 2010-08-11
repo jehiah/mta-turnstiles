@@ -1,0 +1,21 @@
+
+This file describes steps necessary to load data
+
+============
+
+Data is available from http://mta.info/developers/turnstile.html
+
+============
+
+# 1. Loading Remote-Booth-Station.xls
+
+open in Excel or Numbers and export to csv
+use scripts/upload_remote_booth_data.py to
+upload into the appengine instance
+
+# 2. Loading daily data
+
+* Download the daily zip file
+* extract the zip
+* run scripts/load_daily_tsdata.py --file=/path/to/turnstile_20100505/tsdata.txt
+
