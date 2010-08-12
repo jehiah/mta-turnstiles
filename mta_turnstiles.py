@@ -4,7 +4,7 @@ import tornado.wsgi
 import wsgiref.handlers
 
 # application imports
-import app.main
+import app.index
 
 class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
@@ -14,7 +14,7 @@ class Application(tornado.wsgi.WSGIApplication):
             "debug" : True
         }
         handlers = [
-            (r"^/$", app.main.IndexHandler),
+            (r"^/$", app.index.IndexHandler),
         ]
         tornado.wsgi.WSGIApplication.__init__(self, handlers, **app_settings)
         

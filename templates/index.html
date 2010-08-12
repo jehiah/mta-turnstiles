@@ -1,2 +1,13 @@
-<h1>MTA Turnstile Data</h1>
-<p>yay you made it this far.</p>
+{% extends base.html %}
+
+{% block middle_content %}
+
+    Welcome to MTA Turnstile Data Visualization
+    
+<ul>
+    {% for station in stations %}
+        <li><a href="/station/{{url_escape(station)}}">{{escape(station)}}</a></li>
+    {% end %}
+</ul>
+
+{% end %}

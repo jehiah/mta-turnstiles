@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{% block title %}MTA Turnstile Visualizer{% end %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        {% block css_block %}
+            <link rel="stylesheet" href="{{static_url("css/basic.css")}}" type="text/css" charset="utf-8" />
+        {% end %}    
+        
+        {% block head_extra_1 %}{% end %}
+        
+    </head>
+    <body>
+        {% block container_content %} 
+        <div id="container">
+            <div id="top">
+                {% block top_content %}
+
+                {% end %}
+            </div>
+            
+            <div id="middle">
+            {% block middle_content %}
+            
+                Welcome to MTA Turnstile Data Visualization
+
+            {% end %}
+            </div>
+        
+            <div id="bottom">
+                {% block bottom_content %}
+                    Source for this site is at <a href="http://github.com/jehiah/mta-turnstiles">http://github.com/jehiah/mta-turnstiles</a>
+                {% end %}            
+            </div>
+            
+        </div>
+        {% end %}
+        
+        
+        {% block javascript %}
+        {% end %}        
+    </body>
+</html>
