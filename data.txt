@@ -9,19 +9,17 @@ Data is available from http://mta.info/developers/turnstile.html
 
 # 1. Loading Remote-Booth-Station.xls
 
-open in Excel or Numbers and export to csv
-use scripts/upload_remote_booth_data.py to
-upload into the appengine instance
+This data file has been converted to csv and saved as data/Remote-Booth-Station.csv
 
     # upload locally
-    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --url=http://127.0.0.1:8086/remote_api --application=mta-turnstiles
-    # upload remotely
-    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --application=mta-turnstiles .
+    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --url=http://127.0.0.1:8086/remote_api --application=mta-turnstiles --has_header=True
+
+    # uploading remotely
+    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --application=mta-turnstiles --has_header=True .
 
 # 2. Loading daily data
 
-* Download the daily zip file
-* extract the zip
+* Download the daily txt file
 * scripts/turnstile_to_csv.py --file=data/turnstile_20100505.txt
 * appcfg.py upload_data --config_file=bulkloader.yaml --filename=data/turnstile_20100505.csv --kind=Unit .
 

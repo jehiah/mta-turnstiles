@@ -13,7 +13,6 @@ ENTRIESn = The comulative entry register value for a device
 EXISTn = The cumulative exit register value for a device
 
 
-
 Example:
 The data below shows the entry/exit register values for one turnstile at control area (A002) from 03/21/10 at 00:00 hours to 03/28/10 at 20:00 hours
 
@@ -24,3 +23,15 @@ A002,R051,02-00-00,03-23-10,16:00:00,REGULAR,002672879,000917996,03-23-10,20:00:
 A002,R051,02-00-00,03-25-10,00:00:00,REGULAR,002675153,000918675,03-25-10,04:00:00,REGULAR,002675153,000918675,03-25-10,08:00:00,REGULAR,002675190,000918752,03-25-10,12:00:00,REGULAR,002675345,000919053,03-25-10,16:00:00,REGULAR,002675676,000919118,03-25-10,20:00:00,REGULAR,002676557,000919179,03-26-10,00:00:00,REGULAR,002676688,000919207,03-26-10,04:00:00,REGULAR,002676694,000919208
 A002,R051,02-00-00,03-26-10,08:00:00,REGULAR,002676735,000919287,03-26-10,12:00:00,REGULAR,002676887,000919607,03-26-10,16:00:00,REGULAR,002677213,000919680,03-26-10,20:00:00,REGULAR,002678039,000919743,03-27-10,00:00:00,REGULAR,002678144,000919756,03-27-10,04:00:00,REGULAR,002678145,000919756,03-27-10,08:00:00,REGULAR,002678155,000919777,03-27-10,12:00:00,REGULAR,002678247,000919859
 A002,R051,02-00-00,03-27-10,16:00:00,REGULAR,002678531,000919908,03-27-10,20:00:00,REGULAR,002678892,000919964,03-28-10,00:00:00,REGULAR,002678929,000919966,03-28-10,04:00:00,REGULAR,002678929,000919966,03-28-10,08:00:00,REGULAR,002678935,000919982,03-28-10,12:00:00,REGULAR,002679003,000920006,03-28-10,16:00:00,REGULAR,002679231,000920059,03-28-10,20:00:00,REGULAR,002679475,000920098
+
+2. The values and associated descriptions for the audit event (DESCn) field are listed below. An event causes a turnstile to upload its audit registers values to the mainframe.
+
+AUDIT EVENT               DESCRIPTION
+----------------------------------------------
+Regular                         Scheduled every four hours
+Turnstile Vault Open       Installation condition (Rehabilitation project)
+Door Close                    Maintenance
+Door Open                     Maintenance
+Turnstile Board Change  Maintenance or installation condition
+Recover Audit                Recover form a communication outage condition
+Logon                           Maintenance condition (applicable to PATH turnstile only)
