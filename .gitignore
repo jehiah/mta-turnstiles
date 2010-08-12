@@ -1,6 +1,7 @@
 tornado
 ._*
 data/turnstile*
+data/complete.csv
 *.pyc
 bulkloader-*
 

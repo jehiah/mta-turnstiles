@@ -19,8 +19,11 @@ This data file has been converted to csv and saved as data/Remote-Booth-Station.
 
 # 2. Loading daily data
 
-* Download the daily txt file
-* scripts/turnstile_to_csv.py --file=data/turnstile_20100505.txt
-* appcfg.py upload_data --config_file=bulkloader.yaml --filename=data/turnstile_20100505.csv --kind=Unit .
+* Download the weekly txt file
+* add to the summary csv file
+$ cd scripts; for datafile in ../data/turnstile_10*.txt; do python turnstile_to_csv.py --input_file=$datafile; done
+$ python turnstile_to_csv.py --input_file=turnstile_20100505.txt
+
+# * appcfg.py upload_data --config_file=bulkloader.yaml --filename=data/turnstile_20100505.csv --kind=Unit .
 
 
