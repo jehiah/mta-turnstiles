@@ -27,6 +27,24 @@ class CountLoader(bulkloader.Loader):
                                     ('exits_diff', int)
                                    ])
 
+
+class StationCount(db.Model):
+   station = db.StringProperty()
+   record_date = db.DateProperty()
+   entrances = db.IntegerProperty()
+   exits = db.IntegerProperty()
+
+class StationCountLoader(bulkloader.Loader):
+   def __init__(self):
+       bulkloader.Loader.__init__(self, 'StationCount',
+                                  [('record_date',
+                                    lambda x: datetime.datetime.strptime(x, '%m-%d-%y').date()),
+                                   ('station', lambda x: x.decode('utf-8')),
+                                   ('entrances', int),
+                                   ('exits', int),
+                                  ])
+
+
 class Unit(db.Model):
     station = db.StringProperty()
     unit = db.StringProperty()
@@ -40,4 +58,4 @@ class UnitLoader(bulkloader.Loader):
                                     ('station', lambda x: x.decode('utf-8')),
                                     ])
 
-loaders = [CountLoader, UnitLoader]
+loaders = [CountLoader, UnitLoader, StationCountLoader]

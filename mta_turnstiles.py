@@ -15,6 +15,7 @@ class Application(tornado.wsgi.WSGIApplication):
         }
         handlers = [
             (r"^/$", app.index.IndexHandler),
+            (r"^/station/([^\/]*?)/?$", app.index.StationHandler),
         ]
         tornado.wsgi.WSGIApplication.__init__(self, handlers, **app_settings)
         

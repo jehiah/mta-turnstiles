@@ -12,17 +12,25 @@ Data is available from http://mta.info/developers/turnstile.html
 This data file has been converted to csv and saved as data/Remote-Booth-Station.csv
 
     # upload locally
-    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --url=http://127.0.0.1:8086/remote_api --application=mta-turnstiles --has_header=True
+    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --url=http://127.0.0.1:8086/remote_api --application=mta-turnstiles --has_header
 
     # uploading remotely
-    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --application=mta-turnstiles --has_header=True .
+    appcfg.py upload_data --config_file=lib/models.py --filename=data/Remote-Booth-Station.csv --kind=Unit --application=mta-turnstiles --has_header .
 
-# 2. Loading daily data
+# 2. parse into daily data
 
 * Download the weekly txt file
 * add to the summary csv file
 $ cd scripts; for datafile in ../data/turnstile_10*.txt; do python turnstile_to_csv.py --input_file=$datafile; done
 $ python turnstile_to_csv.py --input_file=turnstile_20100505.txt
+
+# 3. load daily data
+
+# upload locally
+appcfg.py upload_data --config_file=lib/models.py --filename=data/turnstile_daily.csv --kind=StationCount --url=http://127.0.0.1:8086/remote_api --application=mta-turnstiles
+
+# uploading remotely
+appcfg.py upload_data --config_file=lib/models.py --filename=data/turnstile_daily.csv --kind=StationCount --application=mta-turnstiles .
 
 # * appcfg.py upload_data --config_file=bulkloader.yaml --filename=data/turnstile_20100505.csv --kind=Unit .
 

@@ -1,0 +1,22 @@
+{% extends base.html %}
+
+{% block middle_content %}
+
+    <p><a href="/">Home</a> &gt; {{escape(station)}}</p>
+    
+<table cellpadding="2" cellspacing="0" border="1">
+    <tr>
+        <th>Date</th>
+        <th>Entrances</th>
+        <th>Exits</th>
+    </tr>
+    {% for record in data %}
+    <tr>
+        <td>{{escape(str(record.record_date))}}</td>
+        <td class="number">{{escape(str(record.entrances))}}</td>
+        <td class="number">{{escape(str(record.exits))}}</td>
+    </tr>
+    {% end %}
+</table>
+
+{% end %}
