@@ -11,4 +11,14 @@ handlers:
 - url: .*
   script: mta_turnstiles.py
 
-    
+skip_files: |
+     ^(.*/)?(
+     (data.*)
+     (app\.yaml)|
+     (app\.yml)|
+     (index\.yaml)|
+     (index\.yml)|
+     (#.*#)|
+     (.*~)|
+     (\..*)|
+     )$

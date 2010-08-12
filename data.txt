@@ -13,9 +13,12 @@ open in Excel or Numbers and export to csv
 use scripts/upload_remote_booth_data.py to
 upload into the appengine instance
 
+# appcfg.py create_bulkloader_config --filename=bulkloader.yaml 
+# appcfg.py upload_data --config_file=bulkloader.yaml --filename=users.csv --kind=Permission 
+
 # 2. Loading daily data
 
 * Download the daily zip file
 * extract the zip
-* run scripts/load_daily_tsdata.py --file=/path/to/turnstile_20100505/tsdata.txt
+* run scripts/load_daily_turnstile_data.py --file=/path/to/turnstile_20100505.txt
 

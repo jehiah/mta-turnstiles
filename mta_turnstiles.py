@@ -10,6 +10,7 @@ class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
         app_settings = { 
             "template_path": os.path.join(os.path.dirname(__file__), "templates"),
+            "static_path": os.path.join(os.path.dirname(__file__), "static"),
             "debug" : True
         }
         handlers = [
