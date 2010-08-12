@@ -26,3 +26,29 @@ transformers:
   connector: csv
   connector_options: 
     encoding: utf-8
+  property_map:
+      - property: unit
+        external_name: unit
+      - property: control_area
+        external_name: control_area
+      - property: station
+        external_name: station
+
+- kind: StationCount
+  connector: csv
+  connector_options: 
+    encoding: utf-8
+    column_list: [record_date, station, entrances, exits]
+  property_map:
+      - property: record_date
+        external_name: record_date
+        import_transform: transform.import_date_time('%m-%d-%y')
+        export_transform: transform.export_date_time('%m-%d-%Y')
+      - property: station
+        external_name: station
+      - property: entrances
+        external_name: entrances
+        import_transform: int
+      - property: exits
+        external_name: exits
+        import_transform: int

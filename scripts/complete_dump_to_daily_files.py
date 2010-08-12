@@ -52,7 +52,17 @@ def run(input_filename, output_filename, stations_lookup):
         for i in range(len(data_series)-1):
             date, entrances, exits = data_series[i]
             next_date, next_entrances, next_exits = data_series[i+1]
-            daily_key_totals[key].append((date, next_entrances-entrances, next_exits-exits))
+            delta_entrances = next_entrances - entrances
+            delta_exits = next_exits - exits
+            if key.startswith('A002,R051') :
+                logging.info((key, date, entrances, exits, next_date, next_entrances, next_exits, delta_entrances, delta_entrances))
+            if date == next_date:
+                logging.warning((key, date, entrances, exits, next_date, next_entrances, next_exits))
+            # assert date != next_date
+            if next_entrances < entrances or next_exits < exits:
+                logging.warning(('reset?',key, date, entrances, exits, next_date, next_entrances, next_exits))
+                continue
+            daily_key_totals[key].append((date, delta_entrances, delta_exits))
 
     # finally summarize all stuff to the station level
     station_totals = {}
@@ -61,12 +71,13 @@ def run(input_filename, output_filename, stations_lookup):
         station = stations_lookup[control_area]
         if station not in station_totals:
             station_totals[station] = {}
-            for date, entrances, exits in data_series:
-                if date not in station_totals[station]:
-                    station_totals[station][date] = [entrances, exits]
-                else:
-                    current_entrances, current_exits = station_totals[station][date]
-                    station_totals[station][date] = [current_entrances + entrances, current_exits + exits]
+            
+        for date, entrances, exits in data_series:
+            if date not in station_totals[station]:
+                station_totals[station][date] = [entrances, exits]
+            else:
+                current_entrances, current_exits = station_totals[station][date]
+                station_totals[station][date] = [current_entrances + entrances, current_exits + exits]
     
     # now go through all the dates
     all_dates = []
